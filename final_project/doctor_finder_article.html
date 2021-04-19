@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="./css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <p>
+      I recently built a little website designed to help people in Montreal find
+      a family doctor and navigate the healthcare system. The goal was to create
+      an interface where doctors and clinic administrators could enter their
+      information and generate a public-facing profile that would allow them to
+      share up-to-date, accurate information with the general public as part of
+      a centralized system. The site would also include a map displaying clinics
+      filtered by various criteria (those with doctors accepting new patients,
+      allowing walk-ins, etc). Users could enter their postal code to display
+      their location on the map and see which options are closest.
+    </p>
+    <img
+      src="images/project_screenshot.png"
+      class="screenshot"
+      alt="Project map screenshot"
+    />
+
+    <p>
+      For the maps component of this project, I initially opted to use Google
+      Maps JavaScript API and Google Geocoding API. Things were going smoothly
+      until I checked my billing account and noticed that I was on track to
+      incur significant costs if I kept relying on these services. To avoid
+      this, I removed both of these API keys, scrapped my existing code, and
+      went back to the drawing board to develop a new plan.
+    </p>
+
+    <p>
+      After some more research I settled on Open Street Map as my alternative.
+      React Leaflet proved to be a useful tool in setting everything up. As an
+      extra precaution against unnecessary API calls, I set up a caching system
+      for repeat user postal code entries. An object called CACHED_POINTS
+      contains a series of postal codes and their respective latitude/longitude
+      coordinates, and I used these points for testing to ensure the
+      functionality worked properly without making a new API call for each minor
+      change. When a user enters a new postal code, a useEffect is called that
+      compares the entry with all data stored within CACHED_POINTS. If the
+      coordinates already exist within the object, then its stored latitude and
+      longitude are used. If not, a get request is made to the Open Maps API to
+      retrieve the coordinates. That new data is assigned to originPoint using
+      setState and the coordinates are also added to CACHED_POINTS, where they
+      will remain until the user refreshes their browser. This served as an
+      additional safety measure against redundant API calls.
+    </p>
+    <img
+      src="/images/code_screenshot.png"
+      class="screenshot"
+      alt="Code screenshot"
+    />
+  </body>
+</html>
