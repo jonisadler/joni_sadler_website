@@ -1,20 +1,33 @@
-.container {
-    margin-left: 30px;
+\.container {
+  margin-left: 30px;
 }
 
 .title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
 }
 
 p {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 30px;
 }
 
 .github,
 .projects,
 .contact {
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.article_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.screenshot_container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }
