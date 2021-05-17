@@ -17,30 +17,58 @@
       <div class="container">
         <h1 class="title">Joni Sadler</h1>
         <p style="font-size: 18px">
-          Montreal-based full stack developer. Learning new coding languages,
-          running, and playing drums in my spare time.
+          Montreal-based full stack developer working with React, Node, Redux,
+          MongoDB, Express, JavaScript, HTML, and CSS.
+          <br />
+          <br />Learning new coding languages, running, and playing drums in my
+          spare time.
         </p>
-        <h3>
+        <div class="cv">
           <a
-            href="https://github.com/joni-sadler"
-            class="github"
+            href="https://docs.google.com/document/d/1YSE7aXM5fEziuNp2wLOp-xsL1hv0kYZbrFjhoF1Ft4Y/edit?usp=sharing"
             target="_blank"
-            >Github</a
+            >CV</a
           >
-        </h3>
-        <!-- <h3>
-          <a
-            href="http://jonisadler.com/projects/doctor_finder/doctor_finder_article.html"
-            class="projects"
-            >Projects</a
-          >
-        </h3> -->
-        <h3>
-          <a href="mailto:joni.anne.sadler@gmail.com" class="contact"
-            >Contact</a
-          >
-        </h3>
+        </div>
+        <div class="github">
+          <a href="https://github.com/joni-sadler" target="_blank">Github</a>
+        </div>
+        <div class="contact">
+          <a href="mailto:joni.anne.sadler@gmail.com">Contact</a>
+        </div>
+        <!-- <div class="projects">
+          <div class="dropdown">
+            <button onclick="projectFunction()" class="dropbtn">
+              Articles
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+              <a
+                href="https://jonisadler.com/projects/doctor_finder/doctor_finder_article.html"
+                >Caching data to improve efficiency</a
+              >
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
+
+    <script>
+      function projectFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+          let dropdowns = document.getElementsByClassName("dropdown-content");
+          let i;
+          for (i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
+    </script>
   </body>
 </html>
