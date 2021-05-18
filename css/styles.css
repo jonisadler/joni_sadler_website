@@ -1,18 +1,22 @@
-  .github,
-  .cv,
-  .projects,
-  .contact {
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5em;
-    font-weight: 600;
-    padding-top: 10px;
-  }
+.github,
+.cv,
+.projects,
+.contact {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding-top: 10px;
+}
 
- .screenshot {
-    width: 100%;
-    height: auto;
-  }
+.screenshot {
+  width: 100%;
+  height: auto;
+}
+
+a.index_link {
+  color: black;
+}
 
 @media (min-width: 768px) {
   body {
@@ -65,7 +69,6 @@
     border-bottom: none;
     text-decoration: none;
     font-weight: 600;
-    color: black;
   }
 
   a:hover {
@@ -139,7 +142,7 @@
   .article_container {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     width: 70%;
     margin: auto;
   }
@@ -203,14 +206,11 @@
     border-bottom: none;
     text-decoration: none;
     font-weight: 600;
-    color: black;
   }
 
   a:hover {
     text-decoration: underline;
   }
-
- 
 }
 
 .dropbtn {
