@@ -6,68 +6,99 @@
     <link href="../../css/styles.css" rel="stylesheet" />
   </head>
 
+  <style>
+    html {
+      background: repeating-radial-gradient(#e3ffe7 0%, #d9e7ff 100%);
+    }
+  </style>
   <body>
-    <div class="article_container">
-      <p>
-        I recently built a little website designed to help people in Montreal
-        find a family doctor and navigate the healthcare system. The goal was to
-        create an interface where doctors and clinic administrators could enter
-        their information and generate a public-facing profile that would allow
-        them to share up-to-date, accurate information with the general public
-        as part of a centralized system. The site also includes a map displaying
-        clinics filtered by various criteria (those with doctors accepting new
-        patients, allowing walk-ins, etc). Users can enter their postal code to
-        display their location on the map and see which options are closest.
-        While it was tough to determine which clinics actually accepted
-        different kinds of patients and appointments – in real life, this info
-        would be input by the clinics themselves rather than the site developer
-        – I was able to create a basic mockup using fictional info. While the
-        clinics are all real places, their permissions are not accurate and are
-        simply meant to demonstrate various functionalities.
-      </p>
-      <div class="screenshot_container">
-        <img
-          src="doctor_finder_screenshot.png"
-          class="screenshot"
-          alt="Project map screenshot"
-          width="70%"
-          heigh="auto"
-        />
+    <div class="background">
+      <div class="header">
+        <a href="mailto:joni.anne.sadler@gmail.com" class="header_link"
+          >Contact</a
+        >
+        <a href="http://jonisadler.com" class="header_link">Home</a>
       </div>
-      <p>
-        For the maps component of this project, I initially opted to use Google
-        Maps JavaScript API and Google Geocoding API. Things were going smoothly
-        until I checked my billing account and noticed that I was on track to
-        incur significant costs if I kept relying on these services. To avoid
-        this, I removed both of these API keys, scrapped my existing code, and
-        went back to the drawing board to develop a new plan.
-      </p>
-      <p>
-        After some more research I settled on Open Street Map as my alternative.
-        React Leaflet proved to be a useful tool in setting everything up. As an
-        extra precaution against unnecessary API calls, I set up a caching
-        system for repeat user postal code entries. An object called
-        CACHED_POINTS contains a series of postal codes and their respective
-        latitude/longitude coordinates, and I used these points for testing to
-        ensure the functionality worked properly without making a new API call
-        for each minor change. When a user enters a new postal code, a useEffect
-        is called that compares the entry with all data stored within
-        CACHED_POINTS. If the coordinates already exist within the object, then
-        its stored latitude and longitude are used. If not, a get request is
-        made to the Open Maps API to retrieve the coordinates. That new data is
-        assigned to originPoint using setState and the coordinates are also
-        added to CACHED_POINTS, where they will remain until the user refreshes
-        their browser. This served as an additional safety measure against
-        redundant API calls.
-      </p>
-      <div class="screenshot_container">
-        <img
-          src="doctor_finder_code.png"
-          class="screenshot"
-          alt="Code screenshot"
-          width="70%"
-          heigh="auto"
-        />
+    </div>
+    <div class="white_box">
+      <div class="article_container">
+        <p>
+          As my final project in a
+          <a
+            href="https://concordiabootcamps.ca/courses/full-stack-web-remote/"
+            target="_blank"
+            >full-stack coding course</a
+          >
+          that I recently completed, I developed a
+          <a href="https://github.com/joni-sadler/Doctor-Finder" target="_blank"
+            >website</a
+          >
+          to help people in Montreal find a family doctor and navigate the
+          healthcare system. The goal was to create an interface where doctors
+          and clinic administrators could enter their information and generate a
+          public-facing profile that would allow them to share up-to-date,
+          accurate information with the general public as part of a centralized
+          system. The site also includes a map displaying clinics filtered by
+          various criteria (those with doctors accepting new patients, allowing
+          walk-ins, etc). Users can enter their postal code to display their
+          location on the map and see which options are closest. While it was
+          challenging to determine which clinics actually accepted different
+          kinds of patients and appointments, I was able to create a basic
+          mockup using fictional info. The clinics are all real places, but
+          their permissions are not accurate and are simply meant to demonstrate
+          various functionalities.
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="doctor_finder_screenshot.png"
+            class="screenshot"
+            alt="Project map screenshot"
+          />
+        </div>
+        <p>
+          One of my goals for this project was to maximize the app's efficiency.
+          As a precaution against unnecessary API calls, I set up a caching
+          system for repeat user postal code entries. An object called
+          CACHED_POINTS contains a series of postal codes and their respective
+          latitude/longitude coordinates, which allowed me to prime the cache
+          with some sample data while integrating with the API.
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="cached_points.png"
+            class="screenshot"
+            alt="Project map screenshot"
+          />
+        </div>
+        <p>
+          CACHED_POINTS also proved valuable for general use: when a person
+          enters a new postal code, a useEffect is called that compares the
+          entry with all data stored within the object. If the coordinates
+          already exist, then its stored latitude and longitude are used. If
+          not, a get request is made to the Open Maps API to retrieve the
+          coordinates. That new data is assigned to originPoint using setState
+          and the coordinates are added to the CACHED_POINTS object, where they
+          will remain until the user refreshes their browser. This improved
+          performance and served as an additional safety measure against
+          redundant API calls.
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="doctor_finder_code.png"
+            class="screenshot"
+            alt="Code screenshot"
+          />
+        </div>
+        <p>
+          By collecting and storing user input within the CACHED_POINTS object,
+          we are able to reduce the number of API calls and increase the overall
+          efficiency of the app. Since this site uses open source code and is
+          not available for public use, these efficiency improvements are mostly
+          theoretical; however, for calls to an API with strict limits (say,
+          Google Maps and their Geolocation API) this can become a valuable way
+          to reduce costs and streamline app functionality by minimizing API
+          calls.
+        </p>
       </div>
     </div>
   </body>
