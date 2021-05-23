@@ -70,10 +70,6 @@ a.index_link {
     text-decoration: none;
   }
 
-  a:hover {
-    font-weight: 600;
-  }
-
   .dropbtn {
     background-color: transparent;
     color: black;
@@ -204,10 +200,6 @@ a.index_link {
   a {
     border-bottom: none;
     text-decoration: none;
-  }
-
-  a:hover {
-    font-weight: 600;
   }
 }
 
