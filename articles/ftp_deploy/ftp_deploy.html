@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="../../css/styles.css" rel="stylesheet" />
+  </head>
+
+  <style>
+    html {
+      background: repeating-radial-gradient(#e3ffe7 0%, #d9e7ff 100%);
+    }
+  </style>
+  <body>
+    <div class="background">
+      <div class="header">
+        <a href="mailto:joni.anne.sadler@gmail.com" class="header_link"
+          >Contact</a
+        >
+        <a href="http://jonisadler.com" class="header_link">Home</a>
+      </div>
+    </div>
+    <div class="white_box">
+      <div class="article_container">
+        <p>
+          When I first set up this website I was making updates directly through
+          my hosting service. Eventually I moved to an FTP app (FileZilla) to
+          smooth out the process, and while this was a step in the right
+          direction it still felt like there was room for improvement. A thought
+          struck:
+          <em
+            >what if I could update my site automatically every time I push
+            content to GitHub?</em
+          >
+        </p>
+        <p>
+          The first step in implementing this was looking up
+          <a
+            href="https://github.com/marketplace/actions/ftp-deploy?fbclid=IwAR2N_8qbxe2r6aO-fC8NxDAlQxICy3y6Oa8-u0LwH-mYZmxLsdLtOwSDH5E"
+            target="_blank"
+            >FTP Deploy in GitHub Actions.</a
+          >
+        </p>
+        <p>
+          Following the provided instructions, I created a .yml file in VS Code
+          and added some preliminary info:
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="GitHub_FTP_Deploy_Screenshot.png"
+            class="screenshot"
+            alt="GitHub FTP Deploy screenshot"
+          />
+        </div>
+        <p>
+          The next step was to modify this original info with my username,
+          server details, and password. I didn't want to store the password
+          directly in the .yml file for security reasons.
+          <a
+            href="https://docs.github.com/en/actions/reference/encrypted-secrets"
+            target="_blank"
+            >GitHub secrets</a
+          >
+          to the rescue!
+        </p>
+        <p>
+          To set up a GitHub secret, navigate to your project repository, go to
+          'settings', and you will see 'secrets' in the menu displayed on the
+          left side of your page:
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="GitHub_Secrets_Screenshot.png"
+            class="screenshot"
+            alt="GitHub secrets screenshot"
+          />
+        </div>
+        <p>
+          In 'secrets' you will see two options: Environment secrets and
+          Repository secrets. At first I tried to set up an environment secret
+          and use that for my password entry, but my preliminary deploy tests
+          failed. My next course of action was going the repository secret
+          route. That proved successful. To set up a repository secret, simply
+          click the 'new repository secret' button, enter your information, and
+          click the 'add secret' button to save. I opted to save my server name
+          and username as secrets too for good measure.
+        </p>
+        <p>
+          Once my secrets were taken care of, I updated the .yml file with the
+          new info.​
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="github-actions.ylm_screenshot.png"
+            class="screenshot"
+            alt="Updated .yml file screenshot"
+          />
+        </div>
+        <p>
+          After commiting my .yml file, I made a basic update to my website's
+          homepage to ensure the deploy was being triggered whenever changes
+          were pushed to the GitHub repo. The 'actions' tab on the GitHub repo
+          is the best way to monitor this activity.
+        </p>
+        <div class="screenshot_container">
+          <img
+            src="github_actions_screenshot.png"
+            class="screenshot"
+            alt="GitHub actions screenshot"
+          />
+        </div>
+        <p>
+          A moment later, I was also able to see the new updates reflected
+          directly on my website.​ This is a huge upgrade in terms of ease and
+          efficiency – definitely worth the initial effort!
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
